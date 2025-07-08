@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>User Agreement & Join Group</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background: #f9f9f9;
+    color: #222;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .agreement-box {
+    border: 1px solid #ccc;
+    background: #fff;
+    height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    margin-bottom: 1em;
+    white-space: pre-wrap;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
+  button {
+    padding: 10px 25px;
+    font-size: 1em;
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .already-agreed {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>User Agreement & Disclaimer</h1>
+
+<div id="content" class="agreement-box" readonly>
+🚨 0. Age Restriction & Sensitive Content  
+This group may contain adult-oriented or explicit content. By participating, you confirm that you are at least 18 years old (or the age of majority in your jurisdiction).  
+Any content that features individuals is presumed to involve persons of legal age.  
+If any content is found to depict or suggest acts involving individuals under the age of 18, it will be immediately removed, and the poster will be reported and removed from the group.  
+Admins are not responsible for content shared by users but will act swiftly on any reported violations.
+
+🧩 1. Purpose of the Group  
+This group exists to share a mix of content, including original creations from members and other publicly available or third-party materials. It also serves as a space for like-minded individuals of particular tastes to connect, interact, and share within a respectful and open-minded environment. All participants understand that original content may be posted here.
+
+⚖️ 2. Copyright & Content Responsibility  
+- Members agree not to intentionally infringe on any copyrights.  
+- Content shared in the group is done with the understanding that it is either original, public domain, or shared under fair use.  
+- All members are solely responsible for the content they post.
+
+🙅‍♂️ 3. No Liability  
+- The group admins and creators do not take responsibility for content shared by members.  
+- Admins will moderate in good faith, but users post at their own risk.  
+- Any legal or takedown requests will be referred directly to the original poster.
+
+🛠 4. Moderation & Enforcement  
+- Any post that is removed by an admin is deemed not allowed or irrelevant to the group’s purpose.  
+- Repeated or serious violations will result in a warning or removal from the group.  
+- Admins reserve the right to moderate without warning to maintain group safety and focus.
+
+📌 5. Agreement to Terms  
+By remaining in this group, you confirm that:  
+- You meet the minimum age requirement  
+- You understand the nature and risks of participating in a user-driven space  
+- You accept these terms as a condition of your membership  
+
+Let’s keep this group safe and respectful.
+
+— Admin: inevitable (@toxicGas1916)
+</div>
+
+<label>
+  <input type="checkbox" id="agreeCheckbox" />
+  I confirm that I am 18+ and agree to all the terms above.
+</label>
+
+<button id="confirmBtn" disabled>Confirm & Join Group</button>
+
+<div id="alreadyAgreedMsg" class="already-agreed" style="display:none;">
+  You have already agreed to the User Agreement. <br/>
+  <a href="https://t.me/+_x0hZVMi0O41YzMx" target="_blank" rel="noopener">Click here to join the Telegram group</a>
+</div>
+
+<script>
+  const checkbox = document.getElementById('agreeCheckbox');
+  const confirmBtn = document.getElementById('confirmBtn');
+  const alreadyAgreedMsg = document.getElementById('alreadyAgreedMsg');
+
+  const telegramLink = 'https://t.me/+_x0hZVMi0O41YzMx';
+
+  if (localStorage.getItem('userAgreed') === 'true') {
+    document.getElementById('content').style.display = 'none';
+    checkbox.parentElement.style.display = 'none';
+    confirmBtn.style.display = 'none';
+    alreadyAgreedMsg.style.display = 'block';
+  }
+
+  checkbox.addEventListener('change', () => {
+    confirmBtn.disabled = !checkbox.checked;
+  });
+
+  confirmBtn.addEventListener('click', () => {
+    localStorage.setItem('userAgreed', 'true');
+    window.location.href = telegramLink;
+  });
+</script>
+
+</body>
+</html>
